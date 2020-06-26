@@ -45,4 +45,4 @@ So make sure to check if the response is equal to the one above with an if state
 
 
 
-If you encounter any bug with my code or you want to contribute in any way then [here](https://github.com/arjixgamer/) is the github link
+If you encounter any bug with my code or you want to contribute in any way then [here](https://github.com/ArjixGamer/YifyAPI) is the github link
