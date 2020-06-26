@@ -37,7 +37,7 @@ It will return a list with dictionaries for each movie result found, example bel
 
 if something goes bad and there was an error then it will return this:
 
-```json
+```
 {'status': "error"}
 ```
 
