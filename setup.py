@@ -20,12 +20,11 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires = '>=3.6',
-    url = 'https://github.com/arjixgamer',
+    url = 'https://github.com/ArjixGamer/YifyAPI',
     keywords = ['movies', 'yify', 'torrents', 'download', 'hd'],
     install_requires = [
         'beautifulsoup4>=4.6.0',
         'requests>=2.18.4',
-        'tabulate>=0.8.3',
     ],
     extras_require = {},
     long_description = long_description,
