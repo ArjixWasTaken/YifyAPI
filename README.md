@@ -1,4 +1,4 @@
-This is my API for scraping (Yify)[https://www.yts.mx]
+This is my API for scraping [Yify](https://www.yts.mx)
 
 **#USAGE**
 
