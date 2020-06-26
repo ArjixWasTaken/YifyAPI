@@ -5,7 +5,7 @@ This is my API for scraping [Yify](https://www.yts.mx)
 First you have to import it.
 
 ```python
-from YifyAPI import yify
+from YifyAPI import yify as api
 ```
 
 Now you are ready to use it!
@@ -13,7 +13,7 @@ Now you are ready to use it!
 Currently the only method is :
 
 ```python 
-search_yify(query: str)
+api.search_yify(query: str)
 ```
 
 It will return a list with dictionaries for each movie result found, example below:
