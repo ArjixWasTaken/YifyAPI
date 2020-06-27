@@ -6,13 +6,28 @@ with open('README.md', 'r') as f:
     long_description = f.read()
 
 
+def get_version():
+    import feedparser
+    r = feedparser.parse('https://pypi.org/rss/project/yifyapi/releases.xml')['entries'][0]['title']
+    f = feedparser.parse('https://pypi.org/rss/project/yifyapi/releases.xml')['entries'][0]['title']
+    if int(r.split('.')[-1]) == 10:
+    	ff = int(r.split('.')[-2]) + 1
+    	l = 0
+    else:
+    	ff = int(r.split('.')[-2])
+    	l = int(r.split('.')[-1]) + 1
+    
+    __version__ = f.split('.')
+    __version__ = __version__[0] + '.' + str(ff) + '.' + str(l)
+    return __version__
+version = get_version()
 
 setup(
     name = 'YifyAPI',
-    version = '0.0.5',
+    version = version,
     author = 'ArjixGamer',
     author_email = 'arjixg53@gmail.com',
-    description = 'Download your favourite movies',
+    description = 'A scraping API for Yify.',
     packages = find_packages(),
     classifiers = [
         "Programming Language :: Python :: 3",

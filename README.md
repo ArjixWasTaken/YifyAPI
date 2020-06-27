@@ -22,18 +22,72 @@ It will return a list with dictionaries for each movie result found, example bel
 
 ```
 {
- 'title': 'Sonic the Hedgehog', 
- 'year': '2020', 
- 'link': 'https://yts.mx/movies/sonic-the-hedgehog-2020', 
- 'image': 'https://img.yts.mx/assets/images/movies/sonic_the_hedgehog_2020/medium-cover.jpg', 
- 'qualities': {
-     '720p': {
-         'size': '908.03 MB', 
-         'magnet': 'magnet:?.....'}, 
-     '1080p': {
-         'size': '1.82 GB', 
-         'magnet': 'magnet:?.....'}
- }
+        "title": "Sonic the Hedgehog",
+        "year": "2020",
+        "director": [
+            "Jeff Fowler",
+            "https://www.imdb.com/name/nm1733778/"
+        ],
+        "cast": [
+            [
+                "Jim Carrey",
+                "https://www.imdb.com/name/nm0000120/"
+            ],
+            [
+                "James Marsden",
+                "https://www.imdb.com/name/nm0005188/"
+            ],
+            [
+                "Neal McDonough",
+                "https://www.imdb.com/name/nm0568180/"
+            ],
+            [
+                "Tika Sumpter",
+                "https://www.imdb.com/name/nm1754366/"
+            ]
+        ],
+        "subtitles": "https://yifysubtitles.org/movie-imdb/tt3794354/",
+        "related_movies": [
+            [
+                "Clerks II (2006)",
+                "https://yts.mx/movies/clerks-ii-2006"
+            ],
+            [
+                "Planet of the Apes (1968)",
+                "https://yts.mx/movies/planet-of-the-apes-1968"
+            ],
+            [
+                "*batteries not included (1987)",
+                "https://yts.mx/movies/batteries-not-included-1987"
+            ],
+            [
+                "Hedgehog (2017)",
+                "https://yts.mx/movies/hedgehog-2017"
+            ]
+        ],
+        "synopsis": "Based on the global blockbuster videogame franchise from Sega, SONIC THE HEDGEHOG tells the story of the world's speediest hedgehog as he embraces his new home on Earth. In this live-action adventure comedy, Sonic and his new best friend Tom (James Marsden) team up to defend the planet from the evil genius Dr. Robotnik (Jim Carrey) and his plans for world domination. The family-friendly film also stars Tika Sumpter and Ben Schwartz as the voice of Sonic.",
+        "categories": [
+            "Action",
+            "Adventure",
+            "Comedy",
+            "Family",
+            "Sci-Fi"
+        ],
+        "link": "https://yts.mx/movies/sonic-the-hedgehog-2020",
+        "imdbLink": "https://www.imdb.com/title/tt3794354/",
+        "trailer": "https://www.youtube.com/watch?v=szby7ZHLnkA",
+        "imdbRating": "6.6/10",
+        "image": "https://img.yts.mx/assets/images/movies/sonic_the_hedgehog_2020/medium-cover.jpg",
+        "qualities": {
+            "720p": {
+                "size": "908.03 MB",
+                "magnet": "magnet:?....."
+            },
+            "1080p": {
+                "size": "1.82 GB",
+                "magnet": "magnet:?....."
+            }
+        }
 }
 ```
 
