@@ -1,4 +1,4 @@
-import asyncio, click
+import asyncio
 from proxybroker import Broker
 import os
 
