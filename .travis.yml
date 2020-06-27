@@ -7,7 +7,7 @@ python:
 cache: pip
 
 install:
-  - pip install feedparser, proxybroker
+  - pip install feedparser proxybroker
   - python setup.py install
 
 script:
