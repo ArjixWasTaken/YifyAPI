@@ -1,4 +1,4 @@
-import requests, json
+import requests, json, time
 from bs4 import BeautifulSoup
 
 def get_html(url, proxy=None):
@@ -18,6 +18,7 @@ def search_yify(query: str, proxy=None):
 		response = requests.get(url, proxies=proxy).json()
 	try:
 		for movie in response['data']:
+			time.sleep(0.9)
 			try:
 				html = get_html(movie['url'])
 				soup = html.find_all('a', class_='avatar-thumb')
