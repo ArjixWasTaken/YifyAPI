@@ -11,4 +11,4 @@ install:
   - python setup.py install
 
 script:
-  - python -m ./test/testme.py
+  - python ./test/testme.py
