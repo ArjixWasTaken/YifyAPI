@@ -1,13 +1,21 @@
 import requests, json
 from bs4 import BeautifulSoup
 
-def get_html(url):
-	return BeautifulSoup(requests.get(url).text, 'html.parser')
+def get_html(url, proxy=None):
+	if not proxy:
+		return BeautifulSoup(requests.get(url).text, 'html.parser')
+	else:
+		proxy = {proxy.split(':')[0]: proxy}
+		return BeautifulSoup(requests.get(url, proxies=proxy).text, 'html.parser')
 
-def search_yify(query: str):
+def search_yify(query: str, proxy=None):
 	results_list = []
 	url = f'https://yts.mx/ajax/search?query={query}'
-	response = requests.get(url).json()
+	if not proxy:
+		response = requests.get(url).json()
+	else:
+		proxy = {proxy.split(':')[0]: proxy}
+		response = requests.get(url, proxies=proxy).json()
 	try:
 		for movie in response['data']:
 			try:
