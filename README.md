@@ -20,7 +20,7 @@ api.search_yify(query: str)
 
 It will return a list with dictionaries for each movie result found, example below:
 
-```
+```json
 {
         "title": "Sonic the Hedgehog",
         "year": "2020",
@@ -93,7 +93,7 @@ It will return a list with dictionaries for each movie result found, example bel
 
 if something goes bad and there was an error then it will return this:
 
-```
+```json
 {'status': "error"}
 ```
 
