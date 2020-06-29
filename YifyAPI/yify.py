@@ -40,10 +40,11 @@ def search_yify(query: str, proxy=None):
 						"small": movie['img'],
 						"large": html.find('img', class_='img-responsive')['src']
 					},
-					"qualities":{ x.find('span').text + '.' + x.find('p', class_='quality-size').text: {
-				"size": x.find('p', class_='quality-size').find_next('p', class_='quality-size').text, 
-				"magnet": x.find('a', class_="magnet-download download-torrent magnet")['href']}
-				for x in html.find_all('div', class_='modal-torrent')}
+					"qualities":
+					[[x.find('span').text + '.' + x.find('p', class_='quality-size').text, 
+					x.find('p', class_='quality-size').find_next('p', class_='quality-size').text,
+					x.find('a', class_="magnet-download download-torrent magnet")['href']] 
+					for x in html.find_all('div', class_='modal-torrent')]
 				}
 				results_list.append(entry)
 			except:
