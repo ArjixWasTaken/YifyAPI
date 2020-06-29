@@ -22,21 +22,6 @@ def search_yify(query: str, proxy=None):
 				html = get_html(movie['url'])
 				soup = html.find_all('a', class_='avatar-thumb')
 				crew = [[x.img['alt'].replace('Picture', '').strip(), x['href']] for x in soup]
-				_720p = html.find('div', id='modal-quality-720p')
-				try:
-					_1080p = html.find('div', id='modal-quality-1080p')
-				except:
-					pass
-				_720p_size = _720p.find_next('p', class_="quality-size").find_next('p', class_="quality-size").text
-				try:
-					_1080p_size = _1080p.find_next('p', class_="quality-size").find_next('p', class_="quality-size").text
-				except:
-					_1080p_size = 'N/A'
-				_720p_magnet = _720p.find_next('a', class_="magnet-download download-torrent magnet")['href']
-				try:
-					_1080p_magnet = _1080p.find_next('a', class_="magnet-download download-torrent magnet")['href']
-				except:
-					_1080p_magnet = 'N/A'
 				entry = \
 				{
 					"title": movie['title'],
