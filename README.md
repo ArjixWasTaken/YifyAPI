@@ -1,6 +1,6 @@
 This is my API for scraping [Yify](https://www.yts.mx)
 
-[![PyPI version](https://badge.fury.io/py/YifyAPI.png)](https://badge.fury.io/py/YifyAPI)
+[![PyPI version](https://badge.fury.io/py/YifyAPI.png)](https://badge.fury.io/py/YifyAPI) [![Build Status](https://travis-ci.com/ArjixGamer/YifyAPI.svg?branch=master)](https://travis-ci.com/ArjixGamer/YifyAPI)
 
 **#USAGE**
 
@@ -15,12 +15,12 @@ Now you are ready to use it!
 Currently the only method is :
 
 ```python 
-api.search_yify(query: str)
+api.search_yify(query: str, proxy=None)
 ```
 
 It will return a list with dictionaries for each movie result found, example below:
 
-```json
+```
 {
         "title": "Sonic the Hedgehog",
         "year": "2020",
@@ -79,11 +79,11 @@ It will return a list with dictionaries for each movie result found, example bel
         "imdbRating": "6.6/10",
         "image": "https://img.yts.mx/assets/images/movies/sonic_the_hedgehog_2020/medium-cover.jpg",
         "qualities": {
-            "720p": {
+            "720p.WEB": {
                 "size": "908.03 MB",
                 "magnet": "magnet:?....."
             },
-            "1080p": {
+            "720p.BluRay": {
                 "size": "1.82 GB",
                 "magnet": "magnet:?....."
             }
@@ -93,8 +93,8 @@ It will return a list with dictionaries for each movie result found, example bel
 
 if something goes bad and there was an error then it will return this:
 
-```json
-{"status": "error"}
+```
+{'status': "error"}
 ```
 
 So make sure to check if the response is equal to the one above with an if statement.

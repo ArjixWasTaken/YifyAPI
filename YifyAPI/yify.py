@@ -1,4 +1,4 @@
-import requests, json, time
+import requests, json
 from bs4 import BeautifulSoup
 
 def get_html(url, proxy=None):
@@ -18,17 +18,25 @@ def search_yify(query: str, proxy=None):
 		response = requests.get(url, proxies=proxy).json()
 	try:
 		for movie in response['data']:
-			time.sleep(0.9)
 			try:
 				html = get_html(movie['url'])
 				soup = html.find_all('a', class_='avatar-thumb')
 				crew = [[x.img['alt'].replace('Picture', '').strip(), x['href']] for x in soup]
 				_720p = html.find('div', id='modal-quality-720p')
-				_1080p = html.find('div', id='modal-quality-1080p')
+				try:
+					_1080p = html.find('div', id='modal-quality-1080p')
+				except:
+					pass
 				_720p_size = _720p.find_next('p', class_="quality-size").find_next('p', class_="quality-size").text
-				_1080p_size = _1080p.find_next('p', class_="quality-size").find_next('p', class_="quality-size").text
+				try:
+					_1080p_size = _1080p.find_next('p', class_="quality-size").find_next('p', class_="quality-size").text
+				except:
+					_1080p_size = 'N/A'
 				_720p_magnet = _720p.find_next('a', class_="magnet-download download-torrent magnet")['href']
-				_1080p_magnet = _1080p.find_next('a', class_="magnet-download download-torrent magnet")['href']
+				try:
+					_1080p_magnet = _1080p.find_next('a', class_="magnet-download download-torrent magnet")['href']
+				except:
+					_1080p_magnet = 'N/A'
 				entry = \
 				{
 					"title": movie['title'],
@@ -43,17 +51,15 @@ def search_yify(query: str, proxy=None):
 					'imdbLink': html.find('a', title='IMDb Rating')['href'],
 					"trailer": ["N/A" if "https://www.youtube.com/watch?v=" + html.find('a', id='playTrailer')['href'].split('?')[0].split('/')[-1].strip() == "https://www.youtube.com/watch?v=" else "https://www.youtube.com/watch?v=" + html.find('a', id='playTrailer')['href'].split('?')[0].split('/')[-1].strip()][0],
 					"imdbRating": html.find('span', itemprop='ratingValue').text + '/10',
-					"image": html.find('img', class_='img-responsive')['src'],
-					"qualities":{
-						"720p": {
-							"size": _720p_size,
-							"magnet": _720p_magnet
-						},
-						"1080p": {
-							"size": _1080p_size,
-							"magnet": _1080p_magnet
-						}
-					}}
+					"image": {
+						"small": movie['img'],
+						"large": html.find('img', class_='img-responsive')['src']
+					},
+					"qualities":{ x.find('span').text + '.' + x.find('p', class_='quality-size').text: {
+				"size": x.find('p', class_='quality-size').find_next('p', class_='quality-size').text, 
+				"magnet": x.find('a', class_="magnet-download download-torrent magnet")['href']}
+				for x in html.find_all('div', class_='modal-torrent')}
+				}
 				results_list.append(entry)
 			except:
 				continue
