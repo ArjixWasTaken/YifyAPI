@@ -78,16 +78,16 @@ It will return a list with dictionaries for each movie result found, example bel
         "trailer": "https://www.youtube.com/watch?v=szby7ZHLnkA",
         "imdbRating": "6.6/10",
         "image": "https://img.yts.mx/assets/images/movies/sonic_the_hedgehog_2020/medium-cover.jpg",
-        "qualities": {
-            "720p.WEB": {
-                "size": "908.03 MB",
-                "magnet": "magnet:?....."
-            },
-            "720p.BluRay": {
-                "size": "1.82 GB",
-                "magnet": "magnet:?....."
-            }
-        }
+        "qualities": [
+            "720p.WEB",
+            "908.03 MB",
+            "magnet:?....."
+            ],
+            ["720p.BluRay",
+            "size": "1.82 GB",
+            "magnet:?....."
+            ]
+        ]
 }
 ```
 An example code snippet that uses YifyAPI can be found [here](https://gist.github.com/ArjixGamer/09a0cda12e9773b71d8ecaaf46f068ea).
