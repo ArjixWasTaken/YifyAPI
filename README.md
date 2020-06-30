@@ -90,7 +90,7 @@ It will return a list with dictionaries for each movie result found, example bel
         }
 }
 ```
-
+An example code snippet that uses YifyAPI [here](https://gist.github.com/ArjixGamer/09a0cda12e9773b71d8ecaaf46f068ea)
 if something goes bad and there was an error then it will return this:
 
 ```
