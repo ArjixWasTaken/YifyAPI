@@ -20,7 +20,7 @@ def search_yify(query: str, proxy=None):
 		for movie in response['data']:
 			try:
 				html = get_html(movie['url'])
-				soup = html.find_all('a', class_='avatar-thumb')
+				soup = html.select('a.avatar-thumb')
 				crew = [[x.img['alt'].replace('Picture', '').strip(), x['href']] for x in soup]
 				entry = \
 				{
@@ -28,23 +28,23 @@ def search_yify(query: str, proxy=None):
 					"year": movie['year'],
 					"director": crew.pop(0),
 					"cast": crew,
-					"subtitles": 'https://yifysubtitles.org/movie-imdb/' + html.find('a', title='IMDb Rating')['href'].split('title/')[-1],
-					"related_movies": [[x['title'], x['href']] for x in html.find('div', id='movie-related').find_all('a')],
-					"synopsis": html.select('#synopsis > p.hidden-sm.hidden-md.hidden-lg')[0].text.strip(),
-					"categories": [x.strip() for x in html.select("#movie-info > div.hidden-xs > h2:nth-child(3)")[0].text.split('/')],
+					"subtitles": 'https://yifysubtitles.org/movie-imdb/' + html.select_one('a[title=\'IMDb Rating\']')['href'].split('title/')[-1],
+					"related_movies": [[x['title'], x['href']] for x in html.select_one('div#movie-related').select('a')],
+					"synopsis": html.select_one('div#synopsis > p.hidden-sm.hidden-md.hidden-lg').text.strip(),
+					"categories": [x.strip() for x in html.select_one("div.hidden-xs > h2:nth-child(3)").text.split('/')],
 					"link": movie['url'],
 					'imdbLink': html.find('a', title='IMDb Rating')['href'],
-					"trailer": ["N/A" if "https://www.youtube.com/watch?v=" + html.find('a', id='playTrailer')['href'].split('?')[0].split('/')[-1].strip() == "https://www.youtube.com/watch?v=" else "https://www.youtube.com/watch?v=" + html.find('a', id='playTrailer')['href'].split('?')[0].split('/')[-1].strip()][0],
-					"imdbRating": html.find('span', itemprop='ratingValue').text + '/10',
+					"trailer": ["N/A" if "https://www.youtube.com/watch?v=" + html.select_one('a#playTrailer')['href'].split('?')[0].split('/')[-1].strip() == "https://www.youtube.com/watch?v=" else "https://www.youtube.com/watch?v=" + html.select_one('a#playTrailer')['href'].split('?')[0].split('/')[-1].strip()][0],
+					"imdbRating": float(html.select_one('span[itemprop=\'ratingValue\']').text),
 					"image": {
 						"small": movie['img'],
-						"large": html.find('img', class_='img-responsive')['src']
+						"large": html.select_one('img.img-responsive')['src']
 					},
 					"qualities":
-					[[x.find('span').text + '.' + x.find('p', class_='quality-size').text, 
+					[[x.find('span').text + '.' + x.select_one('p.quality-size').text, 
 					x.find('p', class_='quality-size').find_next('p', class_='quality-size').text,
-					x.find('a', class_="magnet-download download-torrent magnet")['href']] 
-					for x in html.find_all('div', class_='modal-torrent')]
+					x.select_one('a.magnet-download.download-torrent.magnet')['href']] 
+					for x in html.select('div.modal-torrent')]
 				}
 				results_list.append(entry)
 			except:
