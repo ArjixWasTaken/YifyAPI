@@ -79,13 +79,14 @@ It will return a list with dictionaries for each movie result found, example bel
         "imdbRating": "6.6/10",
         "image": "https://img.yts.mx/assets/images/movies/sonic_the_hedgehog_2020/medium-cover.jpg",
         "qualities": [
-            "720p.WEB",
-            "908.03 MB",
-            "magnet:?....."
+                "720p.WEB",
+                "908.03 MB",
+                "magnet:?....."
             ],
-            ["720p.BluRay",
-            "size": "1.82 GB",
-            "magnet:?....."
+            [
+                "720p.BluRay",
+                "size": "1.82 GB",
+                "magnet:?....."
             ]
         ]
 }
