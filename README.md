@@ -20,7 +20,7 @@ api.search_yify(query: str, proxy=None)
 
 It will return a list with dictionaries for each movie result found, example below:
 
-```
+```json
 {
         "title": "Sonic the Hedgehog",
         "year": "2020",
