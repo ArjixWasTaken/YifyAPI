@@ -1,6 +1,6 @@
 This is my API for scraping [Yify](https://www.yts.mx)
 
-[![PyPI version](https://badge.fury.io/py/YifyAPI.png)](https://badge.fury.io/py/YifyAPI) [![Build Status](https://travis-ci.com/ArjixGamer/YifyAPI.svg?branch=master)](https://travis-ci.com/ArjixGamer/YifyAPI)
+[![PyPI version](https://badge.fury.io/py/YifyAPI.png)](https://badge.fury.io/py/YifyAPI)
 
 **#USAGE**
 
